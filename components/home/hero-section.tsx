@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { CheckCircle2, Hammer } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Container } from "@/components/layout/container"
 
 const highlights = [
   "Vetted, local tradespeople",
@@ -11,7 +12,7 @@ const highlights = [
 export function HeroSection() {
   return (
     <section className="border-b bg-secondary/40">
-      <div className="mx-auto grid max-w-(--breakpoint-xl) gap-10 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-8 lg:py-24">
+      <Container className="grid gap-10 py-14 lg:grid-cols-2 lg:items-center lg:gap-12 lg:py-24">
         <div className="flex flex-col gap-6">
           <span className="inline-flex w-fit items-center gap-2 rounded-full border bg-background px-3 py-1 text-sm font-medium text-muted-foreground">
             <Hammer className="size-4 text-primary" aria-hidden="true" />
@@ -81,7 +82,7 @@ export function HeroSection() {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

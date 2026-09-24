@@ -12,14 +12,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { siteConfig } from "@/lib/site-config"
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/book-service", label: "Book Service" },
-  { href: "/contact", label: "Contact Us" },
-]
+import { siteConfig } from "@/config/site"
+import { mainNavigation } from "@/config/navigation"
 
 export function MobileNavigation() {
   const [open, setOpen] = useState(false)
@@ -49,7 +43,7 @@ export function MobileNavigation() {
           aria-label="Mobile navigation"
           className="flex flex-1 flex-col gap-1 px-4 py-6"
         >
-          {navLinks.map((link) => (
+          {mainNavigation.map((link) => (
             <SheetClose
               key={link.href}
               nativeButton={false}

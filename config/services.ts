@@ -1,5 +1,5 @@
 import { Grid2x2, PaintRoller, CookingPot, TreePine } from "lucide-react"
-import type { Service } from "@/lib/types"
+import type { Service } from "@/types/service"
 
 export const services: Service[] = [
   {

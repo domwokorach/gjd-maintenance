@@ -1,20 +1,15 @@
 import Link from "next/link"
 import { Wrench } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { MobileNavigation } from "@/components/site/mobile-navigation"
-import { siteConfig } from "@/lib/site-config"
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/book-service", label: "Book Service" },
-  { href: "/contact", label: "Contact Us" },
-]
+import { Container } from "@/components/layout/container"
+import { DesktopNavigation } from "@/components/layout/desktop-navigation"
+import { MobileNavigation } from "@/components/layout/mobile-navigation"
+import { siteConfig } from "@/config/site"
 
 export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
-      <div className="mx-auto flex h-16 max-w-(--breakpoint-xl) items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <Container className="flex h-16 items-center justify-between gap-4">
         <Link
           href="/"
           className="flex items-center gap-2 text-lg font-bold tracking-tight"
@@ -28,20 +23,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav
-          aria-label="Primary navigation"
-          className="hidden items-center gap-1 md:flex"
-        >
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="rounded-md px-2.5 py-2 text-sm font-medium text-foreground/80 hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:outline-none lg:px-3"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <DesktopNavigation />
 
         <div className="flex items-center gap-2">
           <Button
@@ -53,7 +35,7 @@ export function Header() {
           </Button>
           <MobileNavigation />
         </div>
-      </div>
+      </Container>
     </header>
   )
 }

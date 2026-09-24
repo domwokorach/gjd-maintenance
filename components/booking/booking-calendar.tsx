@@ -3,14 +3,12 @@
 import { CalendarDays } from "lucide-react"
 import { enGB } from "date-fns/locale"
 import { Calendar } from "@/components/ui/calendar"
+import { formatFriendlyDate, startOfToday } from "@/lib/dates"
 
 interface BookingCalendarProps {
   value: Date | undefined
   onChange: (date: Date | undefined) => void
 }
-
-const today = new Date()
-today.setHours(0, 0, 0, 0)
 
 export function BookingCalendar({ value, onChange }: BookingCalendarProps) {
   return (
@@ -19,7 +17,7 @@ export function BookingCalendar({ value, onChange }: BookingCalendarProps) {
         mode="single"
         selected={value}
         onSelect={onChange}
-        disabled={{ before: today }}
+        disabled={{ before: startOfToday() }}
         locale={enGB}
         className="w-full rounded-xl border bg-card p-3 shadow-sm sm:w-fit"
       />
@@ -29,14 +27,7 @@ export function BookingCalendar({ value, onChange }: BookingCalendarProps) {
           Selected date
         </span>
         <span className="font-semibold">
-          {value
-            ? value.toLocaleDateString("en-GB", {
-                weekday: "long",
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              })
-            : "No date selected yet"}
+          {value ? formatFriendlyDate(value) : "No date selected yet"}
         </span>
       </div>
     </div>

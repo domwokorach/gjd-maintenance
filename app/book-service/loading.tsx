@@ -1,0 +1,10 @@
+import { Loader2 } from "lucide-react"
+
+export default function BookServiceLoading() {
+  return (
+    <div className="flex min-h-[60vh] items-center justify-center">
+      <Loader2 className="size-8 animate-spin text-primary" aria-hidden="true" />
+      <span className="sr-only">Loading booking form…</span>
+    </div>
+  )
+}

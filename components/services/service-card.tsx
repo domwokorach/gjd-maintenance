@@ -1,22 +1,19 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import type { Service } from "@/lib/types"
+import { IconBox } from "@/components/shared/icon-box"
+import type { Service } from "@/types/service"
 
 interface ServiceCardProps {
   service: Service
 }
 
 export function ServiceCard({ service }: ServiceCardProps) {
-  const Icon = service.icon
-
   return (
     <Card className="group flex h-full flex-col justify-between gap-6 rounded-xl border shadow-sm transition-shadow hover:shadow-md">
       <div>
         <CardHeader className="gap-4">
-          <div className="flex size-12 items-center justify-center rounded-lg bg-accent text-accent-foreground">
-            <Icon className="size-6" aria-hidden="true" />
-          </div>
+          <IconBox icon={service.icon} />
           <h3 className="text-xl font-semibold">{service.name}</h3>
         </CardHeader>
         <CardContent>

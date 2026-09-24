@@ -1,9 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useTransition } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Controller, useForm } from "react-hook-form"
-import { z } from "zod"
 import { CircleCheck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -15,27 +14,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { FormField } from "@/components/form-field"
-import { services } from "@/lib/services-data"
-import { isValidUkMobile } from "@/lib/validation"
-
-const contactSchema = z.object({
-  firstName: z.string().trim().min(1, "First name is required"),
-  lastName: z.string().trim().min(1, "Last name is required"),
-  mobileNumber: z
-    .string()
-    .trim()
-    .min(1, "Mobile number is required")
-    .refine(isValidUkMobile, "Enter a valid UK mobile number"),
-  email: z.string().trim().min(1, "Email address is required").email("Enter a valid email address"),
-  serviceRequired: z.string().optional(),
-  message: z.string().trim().min(1, "Please add a message"),
-})
-
-type ContactFormValues = z.infer<typeof contactSchema>
+import { FormField } from "@/components/shared/form-field"
+import { FormSubmitButton } from "@/components/shared/form-submit-button"
+import { services } from "@/config/services"
+import { contactSchema, type ContactFormInput } from "@/validations/contact-schema"
+import { submitContact } from "@/actions/contact-actions"
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
+  const [isPending, startTransition] = useTransition()
 
   const {
     register,
@@ -43,7 +31,7 @@ export function ContactForm() {
     reset,
     control,
     formState: { errors, isSubmitting },
-  } = useForm<ContactFormValues>({
+  } = useForm<ContactFormInput>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
       firstName: "",
@@ -55,9 +43,17 @@ export function ContactForm() {
     },
   })
 
-  const onSubmit = handleSubmit(() => {
-    setSubmitted(true)
-    reset()
+  const onSubmit = handleSubmit((values) => {
+    setSubmitError(null)
+    startTransition(async () => {
+      const result = await submitContact(values)
+      if (result.status === "error") {
+        setSubmitError(result.message)
+        return
+      }
+      setSubmitted(true)
+      reset()
+    })
   })
 
   if (submitted) {
@@ -185,14 +181,13 @@ export function ContactForm() {
         </FormField>
       </div>
 
-      <Button
-        type="submit"
-        size="lg"
-        disabled={isSubmitting}
-        className="w-full rounded-full text-base font-semibold sm:w-auto"
-      >
+      {submitError ? (
+        <p className="text-sm font-medium text-destructive">{submitError}</p>
+      ) : null}
+
+      <FormSubmitButton pending={isSubmitting || isPending}>
         Send Message
-      </Button>
+      </FormSubmitButton>
     </form>
   )
 }

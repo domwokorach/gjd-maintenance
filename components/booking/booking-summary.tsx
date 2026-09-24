@@ -1,6 +1,9 @@
 import { CalendarDays, Clock, User, Wrench } from "lucide-react"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import type { Service } from "@/lib/types"
+import { IconBox } from "@/components/shared/icon-box"
+import { formatFriendlyDate } from "@/lib/dates"
+import type { Service } from "@/types/service"
+import type { LucideIcon } from "lucide-react"
 
 interface BookingSummaryProps {
   service: Service | null
@@ -10,19 +13,17 @@ interface BookingSummaryProps {
 }
 
 function SummaryRow({
-  icon: Icon,
+  icon,
   label,
   value,
 }: {
-  icon: typeof Wrench
+  icon: LucideIcon
   label: string
   value: string
 }) {
   return (
     <div className="flex items-start gap-3">
-      <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-accent text-accent-foreground">
-        <Icon className="size-4" aria-hidden="true" />
-      </div>
+      <IconBox icon={icon} size="sm" />
       <div className="flex flex-col">
         <span className="text-xs font-medium text-muted-foreground">
           {label}
@@ -53,16 +54,7 @@ export function BookingSummary({
         <SummaryRow
           icon={CalendarDays}
           label="Date"
-          value={
-            date
-              ? date.toLocaleDateString("en-GB", {
-                  weekday: "long",
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                })
-              : "Not selected yet"
-          }
+          value={date ? formatFriendlyDate(date) : "Not selected yet"}
         />
         <SummaryRow icon={Clock} label="Time" value={time ?? "Not selected yet"} />
         <SummaryRow

@@ -2,8 +2,9 @@
 
 import { Check } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { services } from "@/lib/services-data"
-import type { ServiceSlug } from "@/lib/types"
+import { services } from "@/config/services"
+import { IconBox } from "@/components/shared/icon-box"
+import type { ServiceSlug } from "@/types/service"
 
 interface ServiceSelectorProps {
   value: ServiceSlug | null
@@ -18,7 +19,6 @@ export function ServiceSelector({ value, onChange }: ServiceSelectorProps) {
       className="grid grid-cols-1 gap-4 sm:grid-cols-2"
     >
       {services.map((service) => {
-        const Icon = service.icon
         const selected = value === service.slug
 
         return (
@@ -35,9 +35,7 @@ export function ServiceSelector({ value, onChange }: ServiceSelectorProps) {
                 : "border-border"
             )}
           >
-            <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-accent text-accent-foreground">
-              <Icon className="size-5" aria-hidden="true" />
-            </div>
+            <IconBox icon={service.icon} size="md" />
             <div className="flex flex-1 flex-col gap-0.5">
               <span className="font-semibold">{service.name}</span>
               <span className="text-sm text-muted-foreground">

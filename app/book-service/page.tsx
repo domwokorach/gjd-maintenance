@@ -1,8 +1,9 @@
 import type { Metadata } from "next"
-import { SectionHeading } from "@/components/site/section-heading"
+import { Section } from "@/components/shared/section"
+import { SectionHeading } from "@/components/shared/section-heading"
 import { BookingForm } from "@/components/booking/booking-form"
-import { getServiceBySlug } from "@/lib/services-data"
-import type { ServiceSlug } from "@/lib/types"
+import { getServiceBySlug } from "@/config/services"
+import type { ServiceSlug } from "@/types/service"
 
 export const metadata: Metadata = {
   title: "Book a Service | GJDS Maintenance",
@@ -24,7 +25,7 @@ export default async function BookServicePage(
     : null
 
   return (
-    <section className="mx-auto max-w-(--breakpoint-xl) px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+    <Section>
       <SectionHeading
         eyebrow="Booking"
         title="Book a Service"
@@ -32,6 +33,6 @@ export default async function BookServicePage(
         className="mb-10"
       />
       <BookingForm initialServiceSlug={initialServiceSlug as ServiceSlug | null} />
-    </section>
+    </Section>
   )
 }
