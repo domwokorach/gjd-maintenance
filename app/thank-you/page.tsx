@@ -20,7 +20,7 @@ export default function ThankYouPage() {
         We&apos;ve received your request and will be in touch shortly to
         confirm the details.
       </p>
-      <Button render={<Link href="/" />} nativeButton={false} className="rounded-full">
+      <Button render={<Link href="/" />} nativeButton={false} className="rounded-[5px]">
         Back to Home
       </Button>
     </Section>

@@ -38,7 +38,7 @@ export function HeroSection() {
                   render={<Link href="/book-service" />}
                   nativeButton={false}
                   size="lg"
-                  className="w-full rounded-full text-base font-semibold sm:w-auto"
+                  className="w-full rounded-[5px] text-base font-semibold sm:w-auto"
                 >
                   Book a Service
                 </Button>
@@ -47,7 +47,7 @@ export function HeroSection() {
                   nativeButton={false}
                   size="lg"
                   variant="outline"
-                  className="w-full rounded-full text-base font-semibold sm:w-auto"
+                  className="w-full rounded-[5px] text-base font-semibold sm:w-auto"
                 >
                   View Services
                 </Button>

@@ -142,7 +142,7 @@ export function BookingForm({ initialServiceSlug }: BookingFormProps) {
             type="submit"
             size="lg"
             disabled={isSubmitting || isPending}
-            className="w-full rounded-full text-base font-semibold"
+            className="w-full rounded-[5px] text-base font-semibold"
           >
             Confirm Booking
           </Button>

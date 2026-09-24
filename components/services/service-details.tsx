@@ -26,7 +26,7 @@ export function ServiceDetails({ service }: ServiceDetailsProps) {
           render={<Link href={`/book-service?service=${service.slug}`} />}
           nativeButton={false}
           size="lg"
-          className="w-full shrink-0 rounded-full lg:w-auto"
+          className="w-full shrink-0 rounded-[5px] lg:w-auto"
         >
           {service.bookCta}
         </Button>

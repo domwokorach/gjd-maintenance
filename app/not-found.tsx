@@ -12,7 +12,7 @@ export default function NotFound() {
       <p className="max-w-sm text-muted-foreground">
         The page you&apos;re looking for doesn&apos;t exist or may have moved.
       </p>
-      <Button render={<Link href="/" />} nativeButton={false} className="rounded-full">
+      <Button render={<Link href="/" />} nativeButton={false} className="rounded-[5px]">
         Back to Home
       </Button>
     </div>

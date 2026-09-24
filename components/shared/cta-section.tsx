@@ -30,7 +30,7 @@ export function CtaSection({
           nativeButton={false}
           size="lg"
           variant="secondary"
-          className="w-full rounded-full text-base font-semibold sm:w-auto"
+          className="w-full rounded-[5px] text-base font-semibold sm:w-auto"
         >
           {buttonLabel}
         </Button>

@@ -70,7 +70,7 @@ export function MobileNavigation() {
                 render={<Link href="/book-service" />}
                 nativeButton={false}
                 size="lg"
-                className="flex-1 rounded-full bg-[#5B7CFF] text-white hover:bg-[#4a6ae8] dark:bg-[#6E8BFF] dark:hover:bg-[#5B7CFF]"
+                className="flex-1 rounded-[5px] bg-[#5B7CFF] text-white hover:bg-[#4a6ae8] dark:bg-[#6E8BFF] dark:hover:bg-[#5B7CFF]"
               />
             }
           >

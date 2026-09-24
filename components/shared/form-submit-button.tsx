@@ -22,7 +22,7 @@ export function FormSubmitButton({
       size="lg"
       disabled={pending}
       className={cn(
-        "rounded-full text-base font-semibold",
+        "rounded-[5px] text-base font-semibold",
         fullWidthOnMobile && "w-full sm:w-auto",
         className
       )}

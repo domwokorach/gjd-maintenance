@@ -32,7 +32,7 @@ export function Header() {
           <Button
             render={<Link href="/book-service" />}
             nativeButton={false}
-            className="hidden rounded-full bg-[#5B7CFF] text-white hover:bg-[#4a6ae8] dark:bg-[#6E8BFF] dark:hover:bg-[#5B7CFF] md:inline-flex"
+            className="hidden rounded-[5px] bg-[#5B7CFF] text-white hover:bg-[#4a6ae8] dark:bg-[#6E8BFF] dark:hover:bg-[#5B7CFF] md:inline-flex"
           >
             Book Now
           </Button>
