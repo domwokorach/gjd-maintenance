@@ -43,7 +43,14 @@ export async function submitBooking(
   }
 
   // Booking is confirmed by email for now; persist to a database here once one is added.
-  await sendBookingEmail(booking)
+  try {
+    await sendBookingEmail(booking)
+  } catch {
+    return {
+      status: "error",
+      message: "We couldn't submit your booking right now. Please try again later.",
+    }
+  }
 
   return { status: "success" }
 }

@@ -28,9 +28,8 @@ const serverEnvSchema = z
     APP_ENV: z.enum(["development", "staging", "production"]).default("development"),
     LOG_LEVEL: z.enum(["debug", "info", "warn", "error"]).default("info"),
 
-    // Email (currently used by lib/email.ts). Optional outside production so
-    // local/staging work without real credentials — booking/contact flows
-    // fall back to logging instead of sending.
+    // Email is optional at build time. Production submissions check for it
+    // when a booking or contact enquiry is actually made.
     RESEND_API_KEY: optionalString(z.string().min(1)),
     BOOKING_EMAIL: optionalString(z.string().trim().email()),
 
@@ -45,24 +44,6 @@ const serverEnvSchema = z
     STORAGE_SECRET_KEY: optionalString(z.string().min(1)),
 
     WEBHOOK_SECRET: optionalString(z.string().min(1)),
-  })
-  .superRefine((value, ctx) => {
-    if (value.APP_ENV !== "production") return
-
-    if (!value.RESEND_API_KEY) {
-      ctx.addIssue({
-        code: "custom",
-        path: ["RESEND_API_KEY"],
-        message: "Required in production so booking/contact emails actually send.",
-      })
-    }
-    if (!value.BOOKING_EMAIL) {
-      ctx.addIssue({
-        code: "custom",
-        path: ["BOOKING_EMAIL"],
-        message: "Required in production as the booking notification recipient.",
-      })
-    }
   })
 
 function loadServerEnv() {

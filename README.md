@@ -43,9 +43,10 @@ emailing when `RESEND_API_KEY`/`BOOKING_EMAIL` are unset).
 | `.env.staging.example` | Yes | never (reference only) | Values to paste into Vercel's **Preview** environment |
 | `.env.local` | No (git-ignored) | always, on top of the above | Your real local secrets |
 
-All validated through [`lib/env.ts`](./lib/env.ts) (Zod). A missing or
-invalid required variable throws at startup/build time rather than failing
-silently later — see `instrumentation.ts`. Only variables prefixed
+All validated through [`lib/env.ts`](./lib/env.ts) (Zod). Invalid values
+throw at startup/build time — see `instrumentation.ts`. Email credentials
+are optional at build time; without them, production booking and contact
+submissions return an error instead of reporting success. Only variables prefixed
 `NEXT_PUBLIC_` are readable in the browser; everything else is enforced
 server-only via the `server-only` package.
 
@@ -57,13 +58,17 @@ Variables**:
 - **Development** — matches `.env.local`; only needed if you use `vercel dev`.
 - **Preview** — paste `.env.staging.example`'s values here, using staging-only
   credentials (never point a preview deploy at production email/DB/storage).
-- **Production** — real production secrets (`RESEND_API_KEY`, `BOOKING_EMAIL`,
-  etc). `NEXT_PUBLIC_*` values already default correctly from
-  `.env.production`, so only secrets need to be added.
+- **Production** — `NEXT_PUBLIC_*` values already default correctly from
+  `.env.production`. Email credentials are not needed to deploy, and the
+  current email sender is only a placeholder.
 
 Dashboard-configured variables always take precedence over the committed
 `.env.*` files, so it's safe for those files to hold real (non-secret)
 production URLs as fallbacks.
+
+Email delivery in `lib/email.ts` is currently a placeholder; configuring
+credentials alone does not send messages. Implement a real email provider
+before accepting live bookings or contact enquiries.
 
 ### API layer
 

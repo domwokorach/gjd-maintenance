@@ -25,7 +25,14 @@ export async function submitContact(
     }
   }
 
-  await sendContactEmail(parsed.data)
+  try {
+    await sendContactEmail(parsed.data)
+  } catch {
+    return {
+      status: "error",
+      message: "We couldn't send your message right now. Please try again later.",
+    }
+  }
 
   return { status: "success" }
 }
