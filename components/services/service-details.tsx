@@ -12,10 +12,10 @@ interface ServiceDetailsProps {
 export function ServiceDetails({ service }: ServiceDetailsProps) {
   return (
     <Card id={service.slug} className="scroll-mt-24 rounded-xl border shadow-sm">
-      <CardHeader className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-        <div className="flex items-start gap-4">
+      <CardHeader className="flex flex-col items-center gap-4 text-center lg:flex-row lg:items-start lg:justify-between lg:text-left">
+        <div className="flex flex-col items-center gap-4 lg:flex-row lg:items-start">
           <IconBox icon={service.icon} />
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col items-center gap-1 lg:items-start">
             <h2 className="text-2xl font-bold">{service.name}</h2>
             <p className="max-w-2xl text-muted-foreground">
               {service.description}
@@ -26,7 +26,7 @@ export function ServiceDetails({ service }: ServiceDetailsProps) {
           render={<Link href={`/book-service?service=${service.slug}`} />}
           nativeButton={false}
           size="lg"
-          className="w-full shrink-0 rounded-[5px] lg:w-auto"
+          className="mx-auto w-full shrink-0 rounded-[5px] sm:w-auto lg:mx-0"
         >
           {service.bookCta}
         </Button>
@@ -36,7 +36,7 @@ export function ServiceDetails({ service }: ServiceDetailsProps) {
           {service.tasks.map((task) => (
             <li
               key={task.label}
-              className="flex items-start gap-2 text-sm text-foreground/90"
+              className="flex items-start justify-center gap-2 text-center text-sm text-foreground/90 lg:justify-start lg:text-left"
             >
               <Check
                 className="mt-0.5 size-4 shrink-0 text-primary"

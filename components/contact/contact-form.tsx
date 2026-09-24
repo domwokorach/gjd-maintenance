@@ -182,12 +182,14 @@ export function ContactForm() {
       </div>
 
       {submitError ? (
-        <p className="text-sm font-medium text-destructive">{submitError}</p>
+        <p className="text-center text-sm font-medium text-destructive lg:text-left">{submitError}</p>
       ) : null}
 
-      <FormSubmitButton pending={isSubmitting || isPending}>
-        Send Message
-      </FormSubmitButton>
+      <div className="flex justify-center lg:justify-start">
+        <FormSubmitButton pending={isSubmitting || isPending}>
+          Send Message
+        </FormSubmitButton>
+      </div>
     </form>
   )
 }

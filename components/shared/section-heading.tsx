@@ -19,7 +19,9 @@ export function SectionHeading({
     <div
       className={cn(
         "flex flex-col gap-3",
-        align === "center" && "items-center text-center",
+        align === "center"
+          ? "items-center text-center"
+          : "items-center text-center lg:items-start lg:text-left",
         className
       )}
     >
@@ -28,14 +30,14 @@ export function SectionHeading({
           {eyebrow}
         </span>
       ) : null}
-      <h2 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl">
+      <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:max-w-none">
         {title}
       </h2>
       {description ? (
         <p
           className={cn(
             "max-w-2xl text-base text-muted-foreground sm:text-lg",
-            align === "center" && "mx-auto"
+            align === "center" ? "mx-auto" : "mx-auto lg:mx-0"
           )}
         >
           {description}

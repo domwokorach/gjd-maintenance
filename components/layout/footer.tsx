@@ -32,8 +32,8 @@ export function Footer() {
 
   return (
     <footer className="border-t border-white/10 bg-[#0B1F3A] text-white dark:bg-[#071426]">
-      <Container className="grid grid-cols-1 gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:py-16">
-        <div className="flex flex-col gap-3">
+      <Container className="grid grid-cols-1 gap-10 py-12 text-center sm:grid-cols-2 lg:grid-cols-4 lg:py-16 lg:text-left">
+        <div className="flex flex-col items-center gap-3 lg:items-start">
           <Link href="/" className="flex items-center gap-2 text-lg font-bold text-white">
             <span className="flex size-9 items-center justify-center rounded-lg bg-[#5B7CFF] text-white dark:bg-[#6E8BFF]">
               <Wrench className="size-5" aria-hidden="true" />
@@ -46,7 +46,7 @@ export function Footer() {
           </p>
         </div>
 
-        <nav aria-label="Footer navigation" className="flex flex-col gap-2">
+        <nav aria-label="Footer navigation" className="flex flex-col items-center gap-2 lg:items-start">
           <span className="mb-1 text-sm font-semibold text-white">Navigation</span>
           {mainNavigation.map((link) => (
             <Link key={link.href} href={link.href} className={footerLinkClasses}>
@@ -55,13 +55,13 @@ export function Footer() {
           ))}
         </nav>
 
-        <nav aria-label="Legal and support" className="flex flex-col gap-2">
+        <nav aria-label="Legal and support" className="flex flex-col items-center gap-2 lg:items-start">
           <span className="mb-1 text-sm font-semibold text-white">Legal &amp; Support</span>
           <button
             type="button"
             ref={termsTriggerRef}
             onClick={() => setTermsOpen(true)}
-            className={cn(footerLinkClasses, "text-left")}
+            className={cn(footerLinkClasses, "text-center lg:text-left")}
           >
             Terms &amp; Conditions
           </button>
@@ -69,7 +69,7 @@ export function Footer() {
             type="button"
             ref={cookieTriggerRef}
             onClick={() => setCookieOpen(true)}
-            className={cn(footerLinkClasses, "text-left")}
+            className={cn(footerLinkClasses, "text-center lg:text-left")}
           >
             Cookie Policy
           </button>
@@ -80,8 +80,8 @@ export function Footer() {
           ))}
         </nav>
 
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col gap-2">
+        <div className="flex flex-col items-center gap-4 lg:items-start">
+          <div className="flex flex-col items-center gap-2 lg:items-start">
             <span className="mb-1 text-sm font-semibold text-white">Get in touch</span>
             <a href={`mailto:${siteConfig.email}`} className={cn(footerLinkClasses, "flex items-center gap-2")}>
               <Mail className="size-4 shrink-0" aria-hidden="true" />
@@ -96,9 +96,9 @@ export function Footer() {
             </a>
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col items-center gap-2 lg:items-start">
             <span className="text-sm font-semibold text-white">Follow us</span>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2 lg:justify-start">
               <a
                 href={siteConfig.social.facebook}
                 target="_blank"
@@ -123,7 +123,7 @@ export function Footer() {
       </Container>
 
       <div className="border-t border-white/10">
-        <Container className="flex flex-col gap-2 py-5 text-sm text-white/60 sm:flex-row sm:items-center sm:justify-between">
+        <Container className="flex flex-col items-center gap-2 py-5 text-center text-sm text-white/60 lg:flex-row lg:justify-between lg:text-left">
           <p>
             &copy; {year} {siteConfig.name}. All rights reserved.
           </p>

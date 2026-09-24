@@ -9,7 +9,7 @@ interface LegalPageProps {
 
 export function LegalPage({ title, intro, children }: LegalPageProps) {
   return (
-    <Section containerClassName="max-w-3xl py-16 lg:py-20">
+    <Section containerClassName="max-w-3xl py-16 text-center lg:py-20 lg:text-left">
       <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
         {title}
       </h1>

@@ -19,22 +19,22 @@ export function HeroSection() {
 
       <Container className="relative z-10">
         <div className="grid gap-10 py-14 lg:min-h-[720px] lg:grid-cols-[minmax(0,1.05fr)_minmax(400px,0.95fr)] lg:items-center lg:gap-12 lg:py-0 xl:gap-16">
-          <div className="min-w-0 max-w-[720px]">
-            <div className="flex flex-col gap-6">
+          <div className="mx-auto min-w-0 max-w-[720px] lg:mx-0">
+            <div className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
               <span className="inline-flex w-fit items-center gap-2 rounded-full border bg-background px-3 py-1 text-sm font-medium text-muted-foreground">
                 <Hammer className="size-4 text-primary" aria-hidden="true" />
                 Local home maintenance you can trust
               </span>
-              <div className="relative max-w-[700px]">
+              <div className="relative mx-auto max-w-[700px] lg:mx-0">
                 <HeroHeadline />
               </div>
-              <p className="max-w-xl text-base leading-7 text-[#3F4145] sm:text-lg dark:text-[#CBD5E1]">
+              <p className="mx-auto max-w-xl text-base leading-7 text-[#3F4145] sm:text-lg lg:mx-0 dark:text-[#CBD5E1]">
                 Professional maintenance and repair services for homes and
                 properties. From bathrooms and kitchens to walls, floors,
                 doors and general repairs, book the help you need at a
                 convenient time.
               </p>
-              <div className="mt-2 flex flex-wrap items-center gap-3">
+              <div className="mt-2 flex w-full flex-wrap items-center justify-center gap-3 lg:justify-start">
                 <Button
                   render={<Link href="/book-service" />}
                   nativeButton={false}
@@ -53,7 +53,7 @@ export function HeroSection() {
                   View Services
                 </Button>
               </div>
-              <ul className="flex flex-col gap-2 pt-2 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-2">
+              <ul className="flex flex-col items-center justify-center gap-2 pt-2 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-2 lg:justify-start">
                 {highlights.map((item) => (
                   <li
                     key={item}

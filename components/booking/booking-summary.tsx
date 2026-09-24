@@ -22,7 +22,7 @@ function SummaryRow({
   value: string
 }) {
   return (
-    <div className="flex items-start gap-3">
+    <div className="flex flex-col items-center gap-3 text-center lg:flex-row lg:items-start lg:text-left">
       <IconBox icon={icon} size="sm" />
       <div className="flex flex-col">
         <span className="text-xs font-medium text-muted-foreground">
@@ -42,7 +42,7 @@ export function BookingSummary({
 }: BookingSummaryProps) {
   return (
     <Card className="rounded-xl border shadow-sm">
-      <CardHeader>
+      <CardHeader className="text-center lg:text-left">
         <h3 className="text-lg font-semibold">Booking Summary</h3>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">

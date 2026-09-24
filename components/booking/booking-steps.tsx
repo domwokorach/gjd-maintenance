@@ -8,7 +8,7 @@ interface BookingStepsProps {
 
 export function BookingSteps({ currentStep }: BookingStepsProps) {
   return (
-    <ol className="flex flex-wrap items-center gap-x-6 gap-y-2">
+    <ol className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 lg:justify-start">
       {BOOKING_STEPS.map((label, index) => {
         const isComplete = index < currentStep
         const isCurrent = index === currentStep

@@ -26,15 +26,15 @@ const contactDetails = [
 export function ContactDetails() {
   return (
     <Card className="order-1 h-fit rounded-xl border bg-secondary/40 shadow-sm lg:order-2">
-      <CardHeader>
+      <CardHeader className="text-center lg:text-left">
         <h3 className="text-lg font-semibold">Contact information</h3>
       </CardHeader>
-      <CardContent className="flex flex-col gap-5">
+      <CardContent className="flex flex-col items-center gap-5 lg:items-stretch">
         {contactDetails.map((item) => {
           const content = (
-            <div className="flex items-start gap-3">
+            <div className="flex flex-col items-center gap-3 text-center lg:flex-row lg:items-start lg:text-left">
               <IconBox icon={item.icon} size="md" />
-              <div className="flex flex-col">
+              <div className="flex min-w-0 flex-col break-words">
                 <span className="text-xs font-medium text-muted-foreground">
                   {item.label}
                 </span>

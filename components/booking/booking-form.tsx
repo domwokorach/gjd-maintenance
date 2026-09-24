@@ -106,22 +106,22 @@ export function BookingForm({ initialServiceSlug }: BookingFormProps) {
           <BookingSteps currentStep={currentStep} />
 
           <section className="flex flex-col gap-4">
-            <h2 className="text-xl font-semibold">1. Choose Service</h2>
+            <h2 className="text-center text-xl font-semibold lg:text-left">1. Choose Service</h2>
             <ServiceSelector value={serviceSlug} onChange={setServiceSlug} />
           </section>
 
           <section className="flex flex-col gap-4">
-            <h2 className="text-xl font-semibold">2. Select Date</h2>
+            <h2 className="text-center text-xl font-semibold lg:text-left">2. Select Date</h2>
             <BookingCalendar value={date} onChange={setDate} />
           </section>
 
           <section className="flex flex-col gap-4">
-            <h2 className="text-xl font-semibold">3. Select Time</h2>
+            <h2 className="text-center text-xl font-semibold lg:text-left">3. Select Time</h2>
             <TimeSelector value={time} onChange={setTime} />
           </section>
 
           <section className="flex flex-col gap-4">
-            <h2 className="text-xl font-semibold">4. Customer Details</h2>
+            <h2 className="text-center text-xl font-semibold lg:text-left">4. Customer Details</h2>
             <CustomerDetails register={register} errors={errors} />
           </section>
         </div>
@@ -134,7 +134,7 @@ export function BookingForm({ initialServiceSlug }: BookingFormProps) {
             customerName={`${firstName ?? ""} ${lastName ?? ""}`.trim()}
           />
           {scheduleError ? (
-            <p className="text-sm font-medium text-destructive">
+            <p className="text-center text-sm font-medium text-destructive lg:text-left">
               {scheduleError}
             </p>
           ) : null}
