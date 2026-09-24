@@ -30,8 +30,9 @@ export function HeroSection() {
               </div>
               <p className="max-w-xl text-base leading-7 text-[#3F4145] sm:text-lg dark:text-[#CBD5E1]">
                 Professional maintenance and repair services for homes and
-                properties. From tiles and plastering to kitchens and garden
-                sheds, book the help you need at a convenient time.
+                properties. From bathrooms and kitchens to walls, floors,
+                doors and general repairs, book the help you need at a
+                convenient time.
               </p>
               <div className="mt-2 flex flex-wrap items-center gap-3">
                 <Button

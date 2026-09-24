@@ -6,6 +6,10 @@ export interface SiteConfig {
   phone: string
   serviceArea: string
   address: string
+  social: {
+    facebook: string
+    instagram: string
+  }
 }
 
 export interface NavLink {

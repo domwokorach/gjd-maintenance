@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/sheet"
 import { siteConfig } from "@/config/site"
 import { mainNavigation } from "@/config/navigation"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { ThemeToggle } from "@/components/theme/theme-toggle"
 
 export function MobileNavigation() {
   const [open, setOpen] = useState(false)

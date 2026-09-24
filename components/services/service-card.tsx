@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { Check } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { IconBox } from "@/components/shared/icon-box"
 import type { Service } from "@/types/service"
@@ -16,21 +17,32 @@ export function ServiceCard({ service }: ServiceCardProps) {
           <IconBox icon={service.icon} />
           <h3 className="text-xl font-semibold">{service.name}</h3>
         </CardHeader>
-        <CardContent>
+        <CardContent className="flex flex-col gap-4">
           <p className="text-muted-foreground">{service.shortDescription}</p>
+          <ul className="flex flex-col gap-1.5">
+            {service.commonJobs.map((job) => (
+              <li
+                key={job.label}
+                className="flex items-start gap-2 text-sm text-foreground/90"
+              >
+                <Check
+                  className="mt-0.5 size-3.5 shrink-0 text-primary"
+                  aria-hidden="true"
+                />
+                {job.label}
+              </li>
+            ))}
+          </ul>
         </CardContent>
       </div>
       <CardContent className="pt-0">
-        <Link
-          href={`/services#${service.slug}`}
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
+        <Button
+          render={<Link href={`/book-service?service=${service.slug}`} />}
+          nativeButton={false}
+          className="w-full rounded-[5px]"
         >
-          View Service
-          <ArrowRight
-            className="size-4 transition-transform group-hover:translate-x-0.5"
-            aria-hidden="true"
-          />
-        </Link>
+          Request a Quote
+        </Button>
       </CardContent>
     </Card>
   )

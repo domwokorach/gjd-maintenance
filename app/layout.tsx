@@ -26,7 +26,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: `${siteConfig.name} | ${siteConfig.tagline}`,
   description:
-    "Professional maintenance and repair services for homes and properties. Book tile, plastering, kitchen and garden maintenance online.",
+    "Professional maintenance and repair services for homes and properties. Book bathroom, kitchen, walls, floors, doors and general repairs online.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

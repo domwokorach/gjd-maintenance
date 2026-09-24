@@ -8,4 +8,8 @@ export const siteConfig: SiteConfig = {
   phone: "07700 900123",
   serviceArea: "Shrewsbury and surrounding areas",
   address: "Shrewsbury, Shropshire",
+  social: {
+    facebook: "https://facebook.com/gjdsmaintenance",
+    instagram: "https://instagram.com/gjdsmaintenance",
+  },
 }

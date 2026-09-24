@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Container } from "@/components/layout/container"
 import { DesktopNavigation } from "@/components/layout/desktop-navigation"
 import { MobileNavigation } from "@/components/layout/mobile-navigation"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { ThemeToggle } from "@/components/theme/theme-toggle"
 
 export function Header() {
   return (

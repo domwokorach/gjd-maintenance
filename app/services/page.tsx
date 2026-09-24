@@ -8,7 +8,7 @@ import { services } from "@/config/services"
 export const metadata: Metadata = {
   title: "Our Maintenance Services | GJDS Maintenance",
   description:
-    "Tile maintenance, plastering, kitchen maintenance and garden & shed maintenance from GJDS Maintenance.",
+    "Bathroom, kitchen, walls & ceilings, floors & tiles, doors & windows, fixtures & fittings, general repairs and garden maintenance from GJDS Maintenance.",
 }
 
 export default function ServicesPage() {
