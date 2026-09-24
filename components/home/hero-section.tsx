@@ -1,7 +1,10 @@
+import Image from "next/image"
 import Link from "next/link"
 import { CheckCircle2, Hammer } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Container } from "@/components/layout/container"
+import { HeroHeadline } from "@/components/hero/HeroHeadline"
+import { MaintenanceDotBackground } from "@/components/backgrounds/maintenance-dot-background"
 
 const highlights = [
   "Vetted, local tradespeople",
@@ -11,74 +14,84 @@ const highlights = [
 
 export function HeroSection() {
   return (
-    <section className="border-b bg-secondary/40">
-      <Container className="grid gap-10 py-14 lg:grid-cols-2 lg:items-center lg:gap-12 lg:py-24">
-        <div className="flex flex-col gap-6">
-          <span className="inline-flex w-fit items-center gap-2 rounded-full border bg-background px-3 py-1 text-sm font-medium text-muted-foreground">
-            <Hammer className="size-4 text-primary" aria-hidden="true" />
-            Local home maintenance you can trust
-          </span>
-          <h1 className="text-4xl font-bold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-            Reliable Home Maintenance, Done Properly
-          </h1>
-          <p className="max-w-xl text-lg text-muted-foreground">
-            Professional maintenance and repair services for homes and
-            properties. From tiles and plastering to kitchens and garden
-            sheds, book the help you need at a convenient time.
-          </p>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <Button
-              render={<Link href="/book-service" />}
-              nativeButton={false}
-              size="lg"
-              className="w-full rounded-full text-base font-semibold sm:w-auto"
-            >
-              Book a Service
-            </Button>
-            <Button
-              render={<Link href="/services" />}
-              nativeButton={false}
-              size="lg"
-              variant="outline"
-              className="w-full rounded-full text-base font-semibold sm:w-auto"
-            >
-              View Services
-            </Button>
-          </div>
-          <ul className="flex flex-col gap-2 pt-2 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-2">
-            {highlights.map((item) => (
-              <li
-                key={item}
-                className="flex items-center gap-2 text-sm text-muted-foreground"
-              >
-                <CheckCircle2
-                  className="size-4 shrink-0 text-primary"
-                  aria-hidden="true"
-                />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
+    <section className="relative isolate overflow-hidden border-b bg-[#F7F4ED] dark:bg-secondary/40">
+      <MaintenanceDotBackground />
 
-        <div className="relative isolate flex aspect-4/3 items-center justify-center overflow-hidden rounded-2xl border bg-linear-to-br from-primary/10 via-accent/40 to-secondary shadow-sm lg:aspect-square">
-          <div className="grid grid-cols-2 gap-4 p-8 sm:gap-6 sm:p-10">
-            <div className="flex flex-col items-center justify-center gap-2 rounded-xl bg-background/80 p-6 text-center shadow-sm backdrop-blur">
-              <span className="text-3xl font-bold text-primary">4</span>
-              <span className="text-sm text-muted-foreground">
-                Core maintenance services
+      <Container className="relative z-10">
+        <div className="grid gap-10 py-14 lg:min-h-[720px] lg:grid-cols-[minmax(0,1.05fr)_minmax(400px,0.95fr)] lg:items-center lg:gap-12 lg:py-0 xl:gap-16">
+          <div className="min-w-0 max-w-[720px]">
+            <div className="flex flex-col gap-6">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full border bg-background px-3 py-1 text-sm font-medium text-muted-foreground">
+                <Hammer className="size-4 text-primary" aria-hidden="true" />
+                Local home maintenance you can trust
               </span>
+              <div className="relative max-w-[700px]">
+                <HeroHeadline />
+              </div>
+              <p className="max-w-xl text-base leading-7 text-black/70 sm:text-lg dark:text-muted-foreground">
+                Professional maintenance and repair services for homes and
+                properties. From tiles and plastering to kitchens and garden
+                sheds, book the help you need at a convenient time.
+              </p>
+              <div className="mt-2 flex flex-wrap items-center gap-3">
+                <Button
+                  render={<Link href="/book-service" />}
+                  nativeButton={false}
+                  size="lg"
+                  className="w-full rounded-full text-base font-semibold sm:w-auto"
+                >
+                  Book a Service
+                </Button>
+                <Button
+                  render={<Link href="/services" />}
+                  nativeButton={false}
+                  size="lg"
+                  variant="outline"
+                  className="w-full rounded-full text-base font-semibold sm:w-auto"
+                >
+                  View Services
+                </Button>
+              </div>
+              <ul className="flex flex-col gap-2 pt-2 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-2">
+                {highlights.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-2 text-sm text-muted-foreground"
+                  >
+                    <CheckCircle2
+                      className="size-4 shrink-0 text-primary"
+                      aria-hidden="true"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="flex flex-col items-center justify-center gap-2 rounded-xl bg-background/80 p-6 text-center shadow-sm backdrop-blur">
-              <span className="text-3xl font-bold text-primary">7</span>
-              <span className="text-sm text-muted-foreground">
-                Days a week booking
-              </span>
-            </div>
-            <div className="col-span-2 flex flex-col items-center justify-center gap-2 rounded-xl bg-background/80 p-6 text-center shadow-sm backdrop-blur">
-              <span className="text-sm font-medium">
-                Trusted by homeowners across Shrewsbury and surrounding areas
-              </span>
+          </div>
+
+          <div className="relative flex min-h-[420px] min-w-0 items-end justify-center lg:min-h-[560px] lg:justify-end lg:translate-x-4 xl:translate-x-8">
+            <div className="relative w-full max-w-[440px] sm:max-w-[520px] lg:max-w-[620px] xl:max-w-[720px]">
+              <div
+                aria-hidden="true"
+                className="absolute -inset-x-6 -inset-y-10 z-1 opacity-80 blur-3xl"
+                style={{
+                  background:
+                    "radial-gradient(closest-side, #F7F4ED 55%, transparent 100%)",
+                }}
+              />
+              <div
+                className="absolute inset-x-[10%] bottom-2 z-1 h-6 rounded-full bg-foreground/10 blur-xl"
+                aria-hidden="true"
+              />
+              <Image
+                src="/images/maintenance-engineer.png"
+                alt="Maintenance engineer holding a wrench and giving a thumbs up"
+                width={1374}
+                height={1145}
+                priority
+                sizes="(max-width: 1024px) 90vw, 46vw"
+                className="relative z-10 h-auto w-full object-contain object-bottom"
+              />
             </div>
           </div>
         </div>
