@@ -26,7 +26,7 @@ export function MobileNavigation() {
           <Button
             variant="ghost"
             size="icon"
-            className="text-white hover:bg-white/10 hover:text-white md:hidden"
+            className="size-11 text-white hover:bg-white/10 hover:text-white md:hidden"
             aria-label="Open menu"
           />
         }
@@ -70,13 +70,13 @@ export function MobileNavigation() {
                 render={<Link href="/book-service" />}
                 nativeButton={false}
                 size="lg"
-                className="flex-1 rounded-[5px] bg-[#5B7CFF] text-white hover:bg-[#4a6ae8] dark:bg-[#6E8BFF] dark:hover:bg-[#5B7CFF]"
+                className="flex-1"
               />
             }
           >
             Book Now
           </SheetClose>
-          <ThemeToggle className="text-white hover:bg-white/10 hover:text-white" />
+          <ThemeToggle className="size-11 text-white hover:bg-white/10 hover:text-white" />
         </div>
       </SheetContent>
     </Sheet>

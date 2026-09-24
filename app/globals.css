@@ -50,38 +50,38 @@
 }
 
 :root {
-  --background: oklch(0.985 0.004 95);
-  --foreground: oklch(0.24 0.03 255);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.24 0.03 255);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.24 0.03 255);
-  --primary: oklch(0.32 0.085 255);
-  --primary-foreground: oklch(0.99 0.005 95);
-  --secondary: oklch(0.955 0.012 250);
-  --secondary-foreground: oklch(0.28 0.05 255);
-  --muted: oklch(0.96 0.008 90);
-  --muted-foreground: oklch(0.47 0.03 255);
-  --accent: oklch(0.93 0.03 225);
-  --accent-foreground: oklch(0.28 0.06 255);
+  --background: #F7F4ED;
+  --foreground: #111111;
+  --card: #FFFFFF;
+  --card-foreground: #111111;
+  --popover: #FFFFFF;
+  --popover-foreground: #111111;
+  --primary: #5B7CFF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F0EDE6;
+  --secondary-foreground: #111111;
+  --muted: #EEEAE2;
+  --muted-foreground: #6B7280;
+  --accent: #5B7CFF;
+  --accent-foreground: #FFFFFF;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.9 0.012 250);
-  --input: oklch(0.9 0.012 250);
-  --ring: oklch(0.55 0.08 255);
+  --border: #DDD9D0;
+  --input: #D4D0C7;
+  --ring: #5B7CFF;
   --chart-1: oklch(0.6 0.1 255);
   --chart-2: oklch(0.65 0.12 200);
   --chart-3: oklch(0.7 0.14 150);
   --chart-4: oklch(0.75 0.13 90);
   --chart-5: oklch(0.6 0.16 30);
   --radius: 5px;
-  --sidebar: oklch(0.985 0.004 95);
-  --sidebar-foreground: oklch(0.24 0.03 255);
-  --sidebar-primary: oklch(0.32 0.085 255);
-  --sidebar-primary-foreground: oklch(0.99 0.005 95);
-  --sidebar-accent: oklch(0.955 0.012 250);
-  --sidebar-accent-foreground: oklch(0.28 0.05 255);
-  --sidebar-border: oklch(0.9 0.012 250);
-  --sidebar-ring: oklch(0.55 0.08 255);
+  --sidebar: #F7F4ED;
+  --sidebar-foreground: #111111;
+  --sidebar-primary: #5B7CFF;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F0EDE6;
+  --sidebar-accent-foreground: #111111;
+  --sidebar-border: #DDD9D0;
+  --sidebar-ring: #5B7CFF;
 }
 
 .dark {
@@ -121,6 +121,11 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+  }
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
   }
   body {
     @apply bg-background text-foreground;

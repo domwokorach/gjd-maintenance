@@ -28,7 +28,7 @@ export function HeroSection() {
               <div className="relative max-w-[700px]">
                 <HeroHeadline />
               </div>
-              <p className="max-w-xl text-base leading-7 text-black/70 sm:text-lg dark:text-muted-foreground">
+              <p className="max-w-xl text-base leading-7 text-[#3F4145] sm:text-lg dark:text-[#CBD5E1]">
                 Professional maintenance and repair services for homes and
                 properties. From tiles and plastering to kitchens and garden
                 sheds, book the help you need at a convenient time.
