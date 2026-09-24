@@ -38,7 +38,7 @@ export function Footer() {
             <span className="flex size-9 items-center justify-center rounded-lg bg-[#5B7CFF] text-white dark:bg-[#6E8BFF]">
               <Wrench className="size-5" aria-hidden="true" />
             </span>
-            {siteConfig.name}
+            GJD Maintenance
           </Link>
           <p className="max-w-xs text-sm text-white/70">
             Reliable maintenance and repair services for homes and
