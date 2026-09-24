@@ -1,35 +1,38 @@
+import Image from "next/image"
 import Link from "next/link"
-import { Wrench } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Container } from "@/components/layout/container"
 import { DesktopNavigation } from "@/components/layout/desktop-navigation"
 import { MobileNavigation } from "@/components/layout/mobile-navigation"
-import { siteConfig } from "@/config/site"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
-      <Container className="flex h-16 items-center justify-between gap-4">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0B1F3A] dark:bg-[#071426]">
+      <Container className="flex h-[72px] items-center justify-between gap-4 lg:h-20">
         <Link
           href="/"
-          className="flex items-center gap-2 text-lg font-bold tracking-tight"
+          aria-label="GJD Maintenance home"
+          className="flex shrink-0 items-center"
         >
-          <span className="flex size-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <Wrench className="size-5" aria-hidden="true" />
-          </span>
-          <span>
-            {siteConfig.shortName}
-            <span className="text-primary"> Maintenance</span>
-          </span>
+          <Image
+            src="/images/gjd-maintenance-logo.png"
+            alt="GJD Maintenance"
+            width={690}
+            height={518}
+            priority
+            className="h-auto w-[100px] object-contain sm:w-[115px] lg:w-[130px]"
+          />
         </Link>
 
         <DesktopNavigation />
 
         <div className="flex items-center gap-2">
+          <ThemeToggle className="hidden text-white hover:bg-white/10 hover:text-white md:inline-flex" />
           <Button
             render={<Link href="/book-service" />}
             nativeButton={false}
-            className="hidden rounded-full md:inline-flex"
+            className="hidden rounded-full bg-[#5B7CFF] text-white hover:bg-[#4a6ae8] dark:bg-[#6E8BFF] dark:hover:bg-[#5B7CFF] md:inline-flex"
           >
             Book Now
           </Button>

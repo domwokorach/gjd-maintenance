@@ -1,16 +1,24 @@
-import { NextResponse } from "next/server"
 import { submitBooking } from "@/actions/booking-actions"
+import { apiError, apiSuccess } from "@/lib/api/response"
+import { logger } from "@/lib/logger"
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null)
 
-  if (!body) {
-    return NextResponse.json({ status: "error", message: "Invalid request body." }, { status: 400 })
+  if (!body || typeof body !== "object") {
+    return apiError("BAD_REQUEST", "Request body must be valid JSON.")
   }
 
-  const result = await submitBooking(body)
+  try {
+    const result = await submitBooking(body)
 
-  return NextResponse.json(result, {
-    status: result.status === "success" ? 200 : 400,
-  })
+    if (result.status === "error") {
+      return apiError("VALIDATION_ERROR", result.message, { details: result.fieldErrors })
+    }
+
+    return apiSuccess({ submitted: true })
+  } catch (cause) {
+    logger.error("booking route failed", { error: cause instanceof Error ? cause.message : String(cause) })
+    return apiError("INTERNAL_ERROR", "Something went wrong while submitting your booking. Please try again.")
+  }
 }

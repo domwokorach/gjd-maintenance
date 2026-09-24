@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useTheme } from 'next-themes';
 import DotField from '@/components/ui/dot-field';
 
 type Density = 'mobile' | 'tablet' | 'desktop';
@@ -48,7 +49,11 @@ const DENSITY_CONFIG: Record<
 // sparingly — blended diagonally so the accent never dominates the field.
 const DOT_OPACITY = { default: 0.16, subtle: 0.11 };
 const ACCENT_OPACITY = { default: 0.1, subtle: 0.07 };
+// Dark mode: white dots at reduced opacity, accent blue lightened to stay visible.
+const DOT_OPACITY_DARK = { default: 0.14, subtle: 0.09 };
+const ACCENT_OPACITY_DARK = { default: 0.08, subtle: 0.06 };
 const GLOW_COLOR = '#5B7CFF';
+const GLOW_COLOR_DARK = '#6E8BFF';
 
 function rgba(r: number, g: number, b: number, a: number) {
   return `rgba(${r}, ${g}, ${b}, ${a})`;
@@ -104,21 +109,33 @@ export function MaintenanceDotBackground({
   const isMobile = useMediaQuery('(max-width: 640px)');
   const isTablet = useMediaQuery('(min-width: 641px) and (max-width: 1024px)');
   const isInViewport = useInViewport(containerRef);
+  const { resolvedTheme } = useTheme();
+  // Guard against a hydration mismatch: next-themes can resolve the persisted
+  // theme synchronously on the client before the server-rendered markup
+  // (always computed without theme knowledge) has been hydrated.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    const markMounted = () => setMounted(true);
+    markMounted();
+  }, []);
+  const isDark = mounted && resolvedTheme === 'dark';
 
   const density: Density = isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop';
 
   const config = useMemo(() => {
     const base = DENSITY_CONFIG[density];
+    const dotOpacity = isDark ? DOT_OPACITY_DARK[variant] : DOT_OPACITY[variant];
+    const accentOpacity = isDark ? ACCENT_OPACITY_DARK[variant] : ACCENT_OPACITY[variant];
     return {
       ...base,
-      gradientFrom: rgba(17, 17, 17, DOT_OPACITY[variant]),
-      gradientTo: rgba(91, 124, 255, ACCENT_OPACITY[variant]),
-      glowColor: GLOW_COLOR,
+      gradientFrom: isDark ? rgba(255, 255, 255, dotOpacity) : rgba(17, 17, 17, dotOpacity),
+      gradientTo: rgba(91, 124, 255, accentOpacity),
+      glowColor: isDark ? GLOW_COLOR_DARK : GLOW_COLOR,
       bulgeOnly: true,
       sparkle: false,
       waveAmplitude: 0,
     };
-  }, [density, variant]);
+  }, [density, variant, isDark]);
 
   // Mounted, in view, and not asked to reduce motion: run the animated field.
   // Otherwise render a static dot texture so the background never disappears.
@@ -161,7 +178,11 @@ export function MaintenanceDotBackground({
         <div
           className="h-full w-full opacity-60"
           style={{
-            backgroundImage: `radial-gradient(${rgba(17, 17, 17, DOT_OPACITY[variant])} 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(${
+              isDark
+                ? rgba(255, 255, 255, DOT_OPACITY_DARK[variant])
+                : rgba(17, 17, 17, DOT_OPACITY[variant])
+            } 1px, transparent 1px)`,
             backgroundSize: `${DENSITY_CONFIG[density].dotSpacing}px ${DENSITY_CONFIG[density].dotSpacing}px`,
           }}
         />

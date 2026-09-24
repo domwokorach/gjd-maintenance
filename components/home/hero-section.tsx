@@ -14,7 +14,7 @@ const highlights = [
 
 export function HeroSection() {
   return (
-    <section className="relative isolate overflow-hidden border-b bg-[#F7F4ED] dark:bg-secondary/40">
+    <section className="relative isolate overflow-hidden border-b border-black/10 bg-[#F7F4ED] dark:border-white/10 dark:bg-[#0B1120]">
       <MaintenanceDotBackground />
 
       <Container className="relative z-10">
@@ -73,11 +73,11 @@ export function HeroSection() {
             <div className="relative w-full max-w-[440px] sm:max-w-[520px] lg:max-w-[620px] xl:max-w-[720px]">
               <div
                 aria-hidden="true"
-                className="absolute -inset-x-6 -inset-y-10 z-1 opacity-80 blur-3xl"
-                style={{
-                  background:
-                    "radial-gradient(closest-side, #F7F4ED 55%, transparent 100%)",
-                }}
+                className="absolute -inset-x-6 -inset-y-10 z-1 opacity-80 blur-3xl [background:radial-gradient(closest-side,#F7F4ED_55%,transparent_100%)] dark:[background:radial-gradient(closest-side,#0B1120_55%,transparent_100%)]"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-1/4 -z-10 hidden rounded-full bg-[#5B7CFF]/10 blur-3xl dark:block"
               />
               <div
                 className="absolute inset-x-[10%] bottom-2 z-1 h-6 rounded-full bg-foreground/10 blur-xl"

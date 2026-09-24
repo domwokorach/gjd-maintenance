@@ -1,16 +1,24 @@
-import { NextResponse } from "next/server"
 import { submitContact } from "@/actions/contact-actions"
+import { apiError, apiSuccess } from "@/lib/api/response"
+import { logger } from "@/lib/logger"
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null)
 
-  if (!body) {
-    return NextResponse.json({ status: "error", message: "Invalid request body." }, { status: 400 })
+  if (!body || typeof body !== "object") {
+    return apiError("BAD_REQUEST", "Request body must be valid JSON.")
   }
 
-  const result = await submitContact(body)
+  try {
+    const result = await submitContact(body)
 
-  return NextResponse.json(result, {
-    status: result.status === "success" ? 200 : 400,
-  })
+    if (result.status === "error") {
+      return apiError("VALIDATION_ERROR", result.message, { details: result.fieldErrors })
+    }
+
+    return apiSuccess({ submitted: true })
+  } catch (cause) {
+    logger.error("contact route failed", { error: cause instanceof Error ? cause.message : String(cause) })
+    return apiError("INTERNAL_ERROR", "Something went wrong while sending your message. Please try again.")
+  }
 }

@@ -11,7 +11,7 @@ export function DesktopNavigation() {
         <Link
           key={link.href}
           href={link.href}
-          className="rounded-md px-2.5 py-2 text-sm font-medium text-foreground/80 hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:outline-none lg:px-3"
+          className="rounded-md px-2.5 py-2 text-sm font-medium text-white/75 hover:bg-white/10 hover:text-white focus-visible:bg-white/10 focus-visible:text-white focus-visible:outline-none lg:px-3"
         >
           {link.label}
         </Link>
